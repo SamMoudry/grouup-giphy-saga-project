@@ -4,7 +4,7 @@ const axios = require('axios');
 const { response } = require('express');
 
 // set up server file to look at the .env file
-require('dontenv').config();
+require('dotenv').config();
 
 const GIPHY_KEY = process.env.GIPHY_API_KEY;
 
