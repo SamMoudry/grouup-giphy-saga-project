@@ -9,7 +9,7 @@ require('dotenv').config();
 const GIPHY_KEY = process.env.GIPHY_API_KEY;
 let searchInput = '';
 
-router.get('/search', (req, res) => {
+router.get('/', (req, res) => {
     axios.get(`http://api.giphy.com/v1/gifs/search?api_key=${GIPHY_KEY}&tag='${searchInput}'`)
     .then(response => {
         console.log(`Data from giphy:`, response.data);
@@ -21,8 +21,10 @@ router.get('/search', (req, res) => {
     })
 })
 
-router.post('/search', (req, res) => {
-    searchInput = req.body;
+router.post('/', (req, res) => {
+    console.log(req.body);
+    searchInput = req.body.searchInput;
+    console.log(searchInput);
     res.sendStatus(200);
 });
 
