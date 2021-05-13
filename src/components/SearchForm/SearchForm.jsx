@@ -1,11 +1,6 @@
 import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 
-
-
-
-
-
 function SearchForm () {
 
     const [searchInput, setSearchInput] = useState('');
@@ -15,14 +10,8 @@ function SearchForm () {
         event.preventDefault();
         console.log('Adding searchInput', searchInput);
         dispatch({type: 'SET_SEARCH', payload: searchInput});
+        setSearchInput('');
     }
-
-
-
-
-
-
-
 
     return (
         <form onSubmit={handleSubmit}>
