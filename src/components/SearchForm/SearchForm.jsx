@@ -15,6 +15,7 @@ function SearchForm () {
         event.preventDefault();
         console.log('Adding searchInput', searchInput);
         dispatch({type: 'SET_SEARCH', payload: searchInput});
+        setSearchInput('');
     }
 
 
