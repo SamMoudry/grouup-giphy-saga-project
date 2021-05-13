@@ -1,17 +1,26 @@
-import {useDispatch} from 'react-redux';
+import axios from 'axios';
 import {useState} from 'react';
 
 function SearchForm () {
 
     const [searchInput, setSearchInput] = useState('');
-    const dispatch = useDispatch();
-
     const handleSubmit = () => {
         event.preventDefault();
         console.log('Adding searchInput', searchInput);
-        dispatch({type: 'SET_SEARCH', payload: searchInput});
-        setSearchInput('');
-    }
+
+        axios.post('/api/search', {
+            searchInput
+        })
+            .then (response => {
+                console.log('Added successfully');
+                //getGiphy
+                setSearchInput('');
+            })
+            .catch( error => {
+                alert(`Sorry. Things aren't working at the moment. Try again later`);
+                console.log('Error adding search', error);
+            });
+    };
 
     return (
         <form onSubmit={handleSubmit}>
