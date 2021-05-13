@@ -20,6 +20,7 @@ function* addImages() {
         const response = yield axios.get('/api/search')
 
         yield put({ type: 'SET_SEARCH', payload: response.data })
+        console.log(response.data)
 
     } catch (error) {
         alert(`Sorry things aren't working at the moment. Try again later.`);
@@ -27,12 +28,15 @@ function* addImages() {
     }
 }
 
+
 // function* sendSearch() {
 
 //     try {
-         
+//          yield axios.post('/api/search', action.payload);
+//          yield put ({type: 'GET_IMAGES'});
 //     } catch {
-
+//         alert(`Sorry I can't send the search input. Try again later.`);
+//         console.log('Error adding search input', error);
 //     }
 // }
 
@@ -53,6 +57,7 @@ const favoriteReducer = (state = [], action ) => {
 const searchReducer = (state = [], action) => {
     if(action.type === 'SET_SEARCH') {
         return [...state, action.payload];
+
     }
     return state
 }
