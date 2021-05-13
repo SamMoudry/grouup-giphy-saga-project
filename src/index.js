@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 function* addImages() {
 
     try {
-        const response = yield axios.get('/api/search')
+        const response = yield axios.get('/api/search', data)
 
         yield put({ type: 'SET_SEARCH', payload: response.data })
         console.log(response.data)
