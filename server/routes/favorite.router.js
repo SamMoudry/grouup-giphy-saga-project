@@ -10,6 +10,8 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
+  const newFavorite = req.body;
+  const queryText = `INSERT INTO`
   res.sendStatus(200);
 });
 
