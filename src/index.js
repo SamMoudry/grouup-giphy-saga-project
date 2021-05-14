@@ -14,19 +14,6 @@ import axios from 'axios';
 const sagaMiddleware = createSagaMiddleware();
 
 
-// function* addImages() {
-
-//     try {
-//         const response = yield axios.get('/api/search', { params: payload });
-
-//         yield put({ type: 'SET_SEARCH', payload: response.data })
-//         console.log(response.data)
-
-//     } catch (error) {
-//         alert(`Sorry things aren't working at the moment. Try again later.`);
-//         console.log('Error getting images', error);
-//     }
-// }
 
 function* addImages(action) {
 
@@ -42,7 +29,9 @@ function* addImages(action) {
         alert(`Sorry things aren't working at the moment. Try again later.`);
         console.log('Error getting images', error);
     }
+
 }
+
 
 
 // function* sendSearch() {
