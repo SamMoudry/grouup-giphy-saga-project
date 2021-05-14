@@ -13,9 +13,13 @@ import axios from 'axios';
 //
 const sagaMiddleware = createSagaMiddleware();
 
+function* watcherSaga() {
+    yield takeEvery('GET_IMAGES', getImages)
+    // yield takeEvery('ADD_FAVORITE', addFavorite)
+}
 
 
-function* addImages(action) {
+function* getImages(action) {
 
     try {
         console.log('Payload:', action.payload);
@@ -34,15 +38,16 @@ function* addImages(action) {
 
 
 
-// function* sendSearch() {
+// function* addFavorite(action) {
 
 //     try {
-//          yield axios.post('/api/search', action.payload);
-//          yield put ({type: 'GET_IMAGES'});
+//          const response = yield axios.post('/api/favorite', action.payload);
+//          yield put ({type: 'SET_FAVORITE', payload: response.data});
 //     } catch {
-//         alert(`Sorry I can't send the search input. Try again later.`);
-//         console.log('Error adding search input', error);
+//         alert(`Sorry I can't get favorites. Try again later.`);
+//         console.log('Error getting favorites', error);
 //     }
+
 // }
 
 
@@ -71,9 +76,7 @@ const searchReducer = (state = {}, action) => {
 }
 
 
-function* watcherSaga() {
-    yield takeEvery('GET_IMAGES', addImages)
-}
+
 
 
 // create store instance that all reducers can use...
