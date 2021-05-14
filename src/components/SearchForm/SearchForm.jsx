@@ -1,6 +1,9 @@
 import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 
+import GiphyList from '../GiphyList/GiphyList.jsx';
+
+
 function SearchForm () {
 
     const [searchInput, setSearchInput] = useState("");
@@ -13,14 +16,17 @@ function SearchForm () {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input 
-            placeholder="Category" 
-            value={searchInput}
-            onChange={(event) => setSearchInput(event.target.value)}
-            />
-            <button type="submit">Search</button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input 
+                placeholder="Category" 
+                value={searchInput}
+                onChange={(event) => setSearchInput(event.target.value)}
+                />
+                <button type="submit">Search</button>
+            </form>
+            <GiphyList />
+        </div>
     );
 }
 
