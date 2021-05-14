@@ -18,7 +18,7 @@ function App() {
             <Link to="/favorite">Favorites</Link>
           </li>
         </ul>
-        <Route exact path="/" component={SearchForm} />
+        <Route exact path="/search" component={SearchForm} />
         <Route exact path="/favorite" component={Favorites} />
       {/* <SearchForm />
       <GiphyList />
