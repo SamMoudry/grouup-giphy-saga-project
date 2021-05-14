@@ -46,6 +46,7 @@ function* addImages() {
 
 // reducer to hold favorited images
 const favoriteReducer = (state = [], action ) => {
+
     if(action.type === 'SET_FAVORITE') {
         return [...state, action.payload];
     }
@@ -55,6 +56,7 @@ const favoriteReducer = (state = [], action ) => {
 
 // reducer to hold GIPHY search results
 const searchReducer = (state = [], action) => {
+    console.log(action.payload);
     if(action.type === 'SET_SEARCH') {
         return [...state, action.payload];
 
@@ -77,8 +79,8 @@ const storeInstance = createStore(
         favoriteReducer,
         searchReducer
     }),
-    applyMiddleware(logger, sagaMiddleware)
-)
+    applyMiddleware(logger, sagaMiddleware),
+);
 
 sagaMiddleware.run(watcherSaga)
 
