@@ -1,25 +1,15 @@
-import axios from 'axios';
+import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 
 function SearchForm () {
 
-    const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState("");
+    const dispatch = useDispatch();
     const handleSubmit = () => {
         event.preventDefault();
         console.log('Adding searchInput', searchInput);
-
-        axios.post('/api/search', {
-            searchInput
-        })
-            .then (response => {
-                console.log('Added successfully');
-                //getGiphy
-                setSearchInput('');
-            })
-            .catch( error => {
-                alert(`Sorry. Things aren't working at the moment. Try again later`);
-                console.log('Error adding search', error);
-            });
+        dispatch({type: 'GET_IMAGES', payload: searchInput});
+        
     };
 
     return (
