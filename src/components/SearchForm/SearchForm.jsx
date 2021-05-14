@@ -15,7 +15,7 @@ function SearchForm () {
     return (
         <form onSubmit={handleSubmit}>
             <input 
-            placeholer="Category" 
+            placeholder="Category" 
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
             />
