@@ -14,13 +14,16 @@ import axios from 'axios';
 const sagaMiddleware = createSagaMiddleware();
 
 
-function* addImages() {
+
+function* addImages(action) {
 
     try {
-        const response = yield axios.get(`/api/search/`)
-
+        console.log('Payload:', action.payload);
+        const response = yield axios.post('/api/search', action.payload);
         yield put({ type: 'SET_SEARCH', payload: response.data })
-        console.log(response.data)
+
+        //yield put({ type: 'SET_SEARCH', payload: response.body })
+        //sconsole.log(body)
 
     } catch (error) {
         alert(`Sorry things aren't working at the moment. Try again later.`);
@@ -60,6 +63,7 @@ const favoriteReducer = (state = [], action ) => {
 const searchReducer = (state = [], action) => {
     console.log(action.payload);
     if(action.type === 'SET_SEARCH') {
+        console.log("action: ", action);
         return [...state, action.payload];
 
     }
@@ -68,9 +72,7 @@ const searchReducer = (state = [], action) => {
 
 
 function* watcherSaga() {
-    yield takeEvery( 'GET_IMAGES', addImages)
-    
-
+    yield takeEvery('GET_IMAGES', addImages)
 }
 
 
