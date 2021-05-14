@@ -1,8 +1,22 @@
 import {useSelector} from 'react-redux';
 
 function GiphyList () {
+
+    const gifs = useSelector(store => store.searchReducer)
+    console.log(gifs);
+
     return (
-        <div>This is where the search return goes.</div>
+        <div>
+            { gifs.data ? 
+                (
+                    <div>
+                        {gifs.data.map((gif) => {
+                           return <img src={gif.images.original.url} key={gif.id}/>
+                        })}
+                    </div>
+                ) : ''
+            }
+        </div>
     );
 }
 
