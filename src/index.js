@@ -19,7 +19,7 @@ function* addImages(action) {
 
     try {
         console.log('Payload:', action.payload);
-        const response = yield axios.post('/api/search', action.payload);
+        const response = yield axios.post('/api/search', {query: action.payload});
         yield put({ type: 'SET_SEARCH', payload: response.data })
 
         //yield put({ type: 'SET_SEARCH', payload: response.body })
@@ -60,11 +60,11 @@ const favoriteReducer = (state = [], action ) => {
 
 
 // reducer to hold GIPHY search results
-const searchReducer = (state = [], action) => {
+const searchReducer = (state = {}, action) => {
     console.log(action.payload);
     if(action.type === 'SET_SEARCH') {
         console.log("action: ", action);
-        return [...state, action.payload];
+        return action.payload;
 
     }
     return state

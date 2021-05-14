@@ -23,9 +23,10 @@ const GIPHY_KEY = process.env.GIPHY_API_KEY;
 // })
 
 router.post('/', (req, res, next) => {
-    const query = req.body['giphy-query']
-    const url = `http://api.giphy.com/v1/gifs/search?api_key=${GIPHY_KEY}&q=${query}`;
-  
+    console.log(req.body.query);
+    const query = req.body.query;
+    const url = `http://api.giphy.com/v1/gifs/search?api_key=${GIPHY_KEY}&limit=20&q="${query}"`;
+    console.log(url);
     request.get(url, (err, response, body) => {
       if(err) { console.error(err) }
   
